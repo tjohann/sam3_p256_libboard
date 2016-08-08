@@ -37,6 +37,8 @@
  *        Headers
  *----------------------------------------------------------------------------*/
 
+#ifdef BOARD_REV_OLIMEX
+
 #include "board.h"
 
 #ifdef BOARD_TSC_ADS7843
@@ -315,3 +317,5 @@ extern void TSD_Reset( void )
 }
 
 #endif /* #ifdef BOARD_TSC_ADS7843 */
+
+#endif

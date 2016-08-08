@@ -38,6 +38,9 @@
  *        Headers
  *----------------------------------------------------------------------------*/
 
+
+#ifdef BOARD_REV_OLIMEX
+
 #include "board.h"
 
 /*----------------------------------------------------------------------------
@@ -195,3 +198,5 @@ void ADS7843_Reset( void )
     /* Disable SPI */
     SPI_Disable( BOARD_TSC_SPI_BASE ) ;
 }
+
+#endif
