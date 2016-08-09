@@ -19,7 +19,7 @@ all::
 	@echo "|                     Building all                          |"
 	@echo "|                                                           |"
 	@echo "+-----------------------------------------------------------+"
-	for dir in $(BUILD); do (cd $$dir && $(MAKE) all); done
+	for dir in $(MODULES); do (cd $$dir && $(MAKE) all); done
 
 clean::
 	rm -f *~ *.o .*~
