@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-#         ATMEL Microcontroller Software Support 
+#         ATMEL Microcontroller Software Support
 # ----------------------------------------------------------------------------
 # Copyright (c) 2010, Atmel Corporation
 #
@@ -164,8 +164,8 @@ create_output:
 #	@echo *$(A_SRC)
 #	@echo -------------------------
 
-	-@mkdir $(subst /,$(SEP),$(OUTPUT_BIN)) 1>NUL 2>&1
-	-@mkdir $(OUTPUT_PATH) 1>NUL 2>&1
+	-@mkdir $(subst /,$(SEP),$(OUTPUT_BIN))
+	-@mkdir $(OUTPUT_PATH)
 
 $(addprefix $(OUTPUT_PATH)/,$(C_OBJ)): $(OUTPUT_PATH)/%.o: %.c
 	@$(CC) -c $(CFLAGS) $< -o $@
@@ -183,7 +183,7 @@ clean:
 #	-cs-rm -fR $(OUTPUT_PATH)
 #	-cs-rm $(subst /,$(SEP),$(OUTPUT_BIN)/$(OUTPUT_LIB))
 
-	-@cs-rm -fR $(OUTPUT_PATH) 1>NUL 2>&1
-	-@cs-rm -fR $(OUTPUT_BIN)/$(OUTPUT_LIB) 1>NUL 2>&1
+	-@cs-rm -fR $(OUTPUT_PATH)
+	-@cs-rm -fR $(OUTPUT_BIN)/$(OUTPUT_LIB)
 
 $(addprefix $(OUTPUT_PATH)/,$(C_OBJ)): $(OUTPUT_PATH)/%.o: $(PROJECT_BASE_PATH)/board.h $(wildcard $(PROJECT_BASE_PATH)/include/*.h)

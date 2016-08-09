@@ -1,17 +1,17 @@
 /**
  *******************************************************************************
  * @file       prot.c
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
- * @brief      Compiler adapter for CooCox CoOS kernel.	
+ * @brief      Compiler adapter for CooCox CoOS kernel.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2010 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 /*---------------------------- Include ---------------------------------------*/
 #include <coocox.h>
@@ -20,12 +20,12 @@
 /**
  ******************************************************************************
  * @brief      Plus a byte integers and Saved into memory cell
- * @param[in]  data    byte integers.	 
- * @param[out] None  
- * @retval     Returns Original value.		 
+ * @param[in]  data    byte integers.
+ * @param[out] None
+ * @retval     Returns Original value.
  *
  * @par Description
- * @details    This function is called to Plus a byte integers 
+ * @details    This function is called to Plus a byte integers
  *             and Saved into memory cell.
  ******************************************************************************
  */
@@ -40,7 +40,7 @@ __asm U8  Inc8 (volatile U8 *data)
     SUBS    R1,#1
     MOVS    R0,R1
     POP     {R1}
-    BX      LR	
+    BX      LR
     ALIGN
 }
 
@@ -48,12 +48,12 @@ __asm U8  Inc8 (volatile U8 *data)
 /**
  ******************************************************************************
  * @brief      Decrease a byte integers and Saved into memory cell
- * @param[in]  data    byte integers.	 
- * @param[out] None  
- * @retval     Returns Original value.		 
+ * @param[in]  data    byte integers.
+ * @param[out] None
+ * @retval     Returns Original value.
  *
  * @par Description
- * @details    This function is called to Decrease a byte integers 
+ * @details    This function is called to Decrease a byte integers
  *             and Saved into memory cell.
  ******************************************************************************
  */
@@ -74,9 +74,9 @@ __asm U8 Dec8 (volatile U8 *data)
 /**
  ******************************************************************************
  * @brief      ENABLE Interrupt
- * @param[in]  None	 
- * @param[out] None  
- * @retval     None		 
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
  * @details    This function is called to ENABLE Interrupt.
@@ -90,9 +90,9 @@ __asm void IRQ_ENABLE_RESTORE(void)
 /**
  ******************************************************************************
  * @brief      Close Interrupt
- * @param[in]  None	 
- * @param[out] None  
- * @retval     None		 
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
  * @details    This function is called to close Interrupt.
@@ -106,9 +106,9 @@ __asm void IRQ_DISABLE_SAVE(void)
 /**
  ******************************************************************************
  * @brief      Set environment	for Coocox OS running
- * @param[in]  pstk    stack pointer	 
- * @param[out] None  
- * @retval     None.		 
+ * @param[in]  pstk    stack pointer
+ * @param[out] None
+ * @retval     None.
  *
  * @par Description
  * @details    This function is called to Set environment
@@ -119,7 +119,7 @@ __asm  void SetEnvironment(OS_STK *pstk)
 {
     SUBS    R0,#28
     MSR     PSP, R0             ; Mov new stack point to PSP
-    BX      LR	
+    BX      LR
     ALIGN
 }
 
@@ -127,12 +127,12 @@ __asm  void SetEnvironment(OS_STK *pstk)
 /**
  ******************************************************************************
  * @brief      Do ready work to Switch Context for task change
- * @param[in]  None	 
- * @param[out] None  
- * @retval     None.		 
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None.
  *
  * @par Description
- * @details    This function is called to Do ready work to 
+ * @details    This function is called to Do ready work to
  *              Switch Context for task change
  ******************************************************************************
  */
@@ -142,16 +142,16 @@ __asm void SwitchContext(void)
     LDR     R1, =0x10000000
     STR     R1, [R0]
     BX      LR
-    ALIGN	
+    ALIGN
 }
 
 
 /**
  ******************************************************************************
  * @brief      Switch Context for task change
- * @param[in]  None	 
- * @param[out] None  
- * @retval     None.		 
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None.
  *
  * @par Description
  * @details    This function is called to Switch Context for task change.
@@ -169,12 +169,12 @@ __asm  void PendSV_Handler()
     LDR     R2,[R2]             ; R2 == next tcb
 
     CMP     R1,R2
-    BEQ     exitPendSV                
+    BEQ     exitPendSV
     MRS     R0, PSP             ; Get PSP point (can not use PUSH,in ISR,SP is MSP )
-  
+
     SUBS    R0,R0,#32
     STR     R0,[R1]             ; Save orig PSP
-								; Store r4-r11,r0 -= regCnt * 4,r0 is new stack 
+								; Store r4-r11,r0 -= regCnt * 4,r0 is new stack
                                 ; top point (addr h->l r11,r10,...,r5,r4)
     STMIA   R0!,{R4-R7}         ; Save old context (R4-R7)
     MOV     R4,R8
@@ -184,10 +184,10 @@ __asm  void PendSV_Handler()
     STMIA   R0!,{R4-R7}         ; Save old context (R8-R11)
 
 
-popStk  
+popStk
     STR     R2, [R3]            ; TCBRunning  = TCBNext;
     LDR     R0, [R2]            ; Get SP of task that be switch into.
-		
+
     ADDS    R0,	R0,#16
     LDMIA   R0!,{R4-R7}         ; Restore new Context (R8-R11)
     MOV     R8,R4
@@ -199,7 +199,7 @@ popStk
     ADDS    R0,	R0,#16
     MSR     PSP, R0             ; Mov new stack point to PSP
 
-exitPendSV    
+exitPendSV
    LDR     R3,=OSSchedLock
    MOVS    R0, #0x0
    STRB    R0, [R3]
@@ -223,24 +223,24 @@ __asm  void PendSV_Handler()
     LDR     R2,[R2]             ; R2 == next tcb
 
     CMP     R1,R2
-    BEQ     exitPendSV                
+    BEQ     exitPendSV
     MRS     R0, PSP             ; Get PSP point (can not use PUSH,in ISR,SP is MSP )
-    STMDB   R0!,{R4-R11}        ; Store r4-r11,r0 -= regCnt * 4,r0 is new stack 
+    STMDB   R0!,{R4-R11}        ; Store r4-r11,r0 -= regCnt * 4,r0 is new stack
                                 ; top point (addr h->l r11,r10,...,r5,r4)
     STR     R0,[R1]             ; Save orig PSP
-popStk  
+popStk
     STR     R2, [R3]            ; TCBRunning  = TCBNext;
     LDR     R0, [R2]            ; Get SP of task that be switch into.
     LDMIA   R0!,{R4-R11}        ; POP (R4-R11),R0 += regCnt * 4
     MSR     PSP, R0             ; Mov new stack point to PSP
 
-exitPendSV    
+exitPendSV
     LDR     R3,=OSSchedLock
     MOVS    R0, #0x0
     STRB    R0, [R3]
     ORR     LR, LR, #0x04       ; Ensure exception return uses process stack
     BX      LR                  ; Exit interrupt
-    
+
     ALIGN
 }
 #endif

@@ -35,7 +35,7 @@
 /** \addtogroup usbd_audio_speakerphone
  *@{
  */
- 
+
 /*------------------------------------------------------------------------------
  *         Headers
  *------------------------------------------------------------------------------*/
@@ -61,7 +61,7 @@ typedef struct _AUDDParseData {
     AUDDSpeakerPhone * pAudf;
     /** Pointer to found interface descriptor */
     USBInterfaceDescriptor * pIfDesc;
-    
+
 } AUDDParseData;
 
 /** Transfer callback extention */
@@ -174,7 +174,7 @@ static uint32_t AUDDSpeakerPhone_Parse(USBGenericDescriptor *pDesc,
 
     if (bSpeakerDone && bMicDone)
         return USBRC_FINISHED;
-    
+
     return USBRC_SUCCESS;
 }
 

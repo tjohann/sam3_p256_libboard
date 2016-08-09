@@ -191,14 +191,14 @@ extern void EFC_TranslateAddress( Efc** ppEfc, uint32_t dwAddress, uint16_t* pwP
 extern void EFC_ComputeAddress( Efc *efc, uint16_t wPage, uint16_t wOffset, uint32_t *pdwAddress )
 {
     uint32_t dwAddress ;
-	
+
     assert( efc ) ;
     assert( wPage <= IFLASH_NB_OF_PAGES ) ;
     assert( wOffset < IFLASH_PAGE_SIZE ) ;
-	
+
     /* Compute address */
     dwAddress = IFLASH_ADDR + wPage * IFLASH_PAGE_SIZE + wOffset ;
-	
+
     /* Store result */
     if ( pdwAddress != NULL )
 	{

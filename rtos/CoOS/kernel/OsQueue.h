@@ -1,18 +1,18 @@
 /**
  *******************************************************************************
  * @file       queue.h
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
- * @brief      Queue management header file	
+ * @brief      Queue management header file
  * @details    This file including some defines and declares about queue management.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef _QUEUE_H
@@ -20,10 +20,10 @@
 
 
 /**
- * @struct   Queue  queue.h	
+ * @struct   Queue  queue.h
  * @brief    Queue struct
  * @details  This struct use to manage queue.
- *	
+ *
  */
 typedef struct Queue
 {

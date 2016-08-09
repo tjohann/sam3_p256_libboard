@@ -120,7 +120,7 @@ typedef struct _Spid
 extern uint32_t SPID_Configure( Spid* pSpid, Spi* pSpiHw, uint8_t spiId ) ;
 
 extern void SPID_ConfigureCS( Spid* pSpid, uint32_t dwCS, uint32_t dwCsr ) ;
-	
+
 extern uint32_t SPID_SendCommand( Spid* pSpid, SpidCmd* pCommand ) ;
 
 extern void SPID_Handler( Spid* pSpid ) ;

@@ -35,7 +35,7 @@
  *  -# Uses the NandFlashModel_Find function to look for a particular model in
  *    the nandFlashModelList array.
  */
- 
+
 #ifndef NANDFLASHMODELLIST_H
 #define NANDFLASHMODELLIST_H
 

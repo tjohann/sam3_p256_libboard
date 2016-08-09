@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2008, Atmel Corporation
  *
@@ -32,9 +32,9 @@
  * \section Purpose
  *
  *   Definitions and methods for USB HID + MSD device implement.
- * 
+ *
  * \section Usage
- * 
+ *
  * -# Initialize USB function specified driver ( for MSD currently )
  *  - MSDDFunctionDriver_Initialize()
  *

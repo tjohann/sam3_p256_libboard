@@ -156,7 +156,7 @@ uint32_t MCI_SetSpeed( Mcid* pMci, uint32_t mciSpeed, uint32_t mck )
         {
             clkdiv ++;
         }
-		
+
         if ( clkdiv > 0 )
         {
             clkdiv -= 1;

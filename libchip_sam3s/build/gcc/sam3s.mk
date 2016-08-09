@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-#         ATMEL Microcontroller Software Support 
+#         ATMEL Microcontroller Software Support
 # ----------------------------------------------------------------------------
 # Copyright (c) 2010, Atmel Corporation
 #
@@ -170,7 +170,7 @@ $(OUTPUT_LIB): $(addprefix $(OUTPUT_PATH)/, $(C_OBJ)) $(addprefix $(OUTPUT_PATH)
 .PHONY: clean
 clean:
 	@echo --- Cleaning $(CHIP) files
-	-@cs-rm -Rf $(OUTPUT_PATH) 1>NUL 2>&1
-	-@cs-rm -Rf $(subst /,$(SEP),$(OUTPUT_BIN)/$(OUTPUT_LIB)) 1>NUL 2>&1
+	-@cs-rm -Rf $(OUTPUT_PATH)
+	-@cs-rm -Rf $(subst /,$(SEP),$(OUTPUT_BIN)/$(OUTPUT_LIB))
 
 $(addprefix $(OUTPUT_PATH)/,$(C_OBJ)): $(OUTPUT_PATH)/%.o: $(PROJECT_BASE_PATH)/chip.h $(wildcard $(PROJECT_BASE_PATH)/include/*.h) $(wildcard $(PROJECT_BASE_PATH)/cmsis/*.h)

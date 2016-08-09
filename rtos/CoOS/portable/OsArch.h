@@ -1,19 +1,19 @@
 /**
  *******************************************************************************
  * @file       OsArch.h
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
  * @brief      Implement function declare related to Cortex-M3(ARM-v7)
- * @details    This header file including functions or defines related to 
- *             Cortex-M3(ARM-v7).	 		
+ * @details    This header file including functions or defines related to
+ *             Cortex-M3(ARM-v7).
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef  _CPU_H
@@ -26,7 +26,7 @@
 
 /*!< Initial System tick.	*/
 #define InitSysTick()   NVIC_ST_RELOAD =  RELOAD_VAL; \
-                        NVIC_ST_CTRL   =  0x0007    
+                        NVIC_ST_CTRL   =  0x0007
 
 #define NVIC_SYS_PRI2   (*((volatile U32 *)0xE000ED1C))
 #define NVIC_SYS_PRI3   (*((volatile U32 *)0xE000ED20))
@@ -37,7 +37,7 @@
 
 
 /*---------------------------- Variable declare ------------------------------*/
-extern U64      OSTickCnt;          /*!< Counter for current system ticks.    */									
+extern U64      OSTickCnt;          /*!< Counter for current system ticks.    */
 
 /*!< Initial context of task being created	*/
 extern OS_STK  *InitTaskContext(FUNCPtr task,void *param,OS_STK *pstk);

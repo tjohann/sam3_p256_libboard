@@ -1,17 +1,17 @@
  /**
  *******************************************************************************
  * @file       core.c
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
- * @brief      Core implementation code of CooCox CoOS kernel.	
+ * @brief      Core implementation code of CooCox CoOS kernel.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 /*---------------------------- Include ---------------------------------------*/
 #include <coocox.h>
@@ -24,17 +24,17 @@ volatile BOOL   TaskSchedReq  = FALSE;
 
 /**
  *******************************************************************************
- * @brief      Enter a ISR.						   
- * @param[in]  None	 
- * @param[out] None   
- * @retval     None	 
+ * @brief      Enter a ISR.
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
  * @details    This function is called to notify OS when enter to an ISR.
  *
  * @note       When you call API in ISR,you must call CoEnterISR() before your
  *             interrupt handler code,and call CoExitISR() after your handler
- *             code and before exiting from ISR.	 
+ *             code and before exiting from ISR.
  *******************************************************************************
  */
 void CoEnterISR(void)
@@ -45,15 +45,15 @@ void CoEnterISR(void)
 
 /**
  *******************************************************************************
- * @brief      Exit a ISR.	 
- * @param[in]  None	 
- * @param[out] None   
- * @retval     None		 
+ * @brief      Exit a ISR.
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
- * @details    This function is called when exit from a ISR.	  	
+ * @details    This function is called when exit from a ISR.
  *
- * @note 
+ * @note
  *******************************************************************************
  */
 void CoExitISR(void)
@@ -74,15 +74,15 @@ void CoExitISR(void)
 
 /**
  *******************************************************************************
- * @brief      Unlock schedule 	  
- * @param[in]  None		 
- * @param[out] None   
- * @retval     None		 
+ * @brief      Unlock schedule
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
- * @details   This function is called to unlock schedule(i.e.enable schedule again) 		 
+ * @details   This function is called to unlock schedule(i.e.enable schedule again)
  *
- * @note 
+ * @note
  *******************************************************************************
  */
 void OsSchedUnlock(void)
@@ -92,7 +92,7 @@ void OsSchedUnlock(void)
 #if CFG_TASK_WAITTING_EN > 0
         if(IsrReq == TRUE)
         {
-            RespondSRQ();               /* Respond service request            */	
+            RespondSRQ();               /* Respond service request            */
         }
 #endif
         /* Judge task state change or higher PRI task coming in               */
@@ -104,41 +104,41 @@ void OsSchedUnlock(void)
     }
 	else
 	{
-		OSSchedLock--; 	
+		OSSchedLock--;
 	}
 }
 
 
 /**
  *******************************************************************************
- * @brief      Lock schedule 	 
- * @param[in]  None		 
- * @param[out] None   
- * @retval     None		 
+ * @brief      Lock schedule
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
- * @details    This function is called in application code to lock schedule.		 
+ * @details    This function is called in application code to lock schedule.
  *
- * @note 
+ * @note
  *******************************************************************************
  */
 void CoSchedLock(void)
-{									    
+{
     OsSchedLock();                      /* Lock schedule                      */
 }
 
 
 /**
  *******************************************************************************
- * @brief      Unlock schedule 	  
- * @param[in]  None		 
- * @param[out] None   
- * @retval     None		 
+ * @brief      Unlock schedule
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
- * @details    This function is called in APP to unlock schedule.		 
+ * @details    This function is called in APP to unlock schedule.
  *
- * @note 
+ * @note
  *******************************************************************************
  */
 void CoSchedUnlock(void)
@@ -149,61 +149,61 @@ void CoSchedUnlock(void)
 
 /**
  *******************************************************************************
- * @brief      Initialize OS	  
- * @param[in]  None 	 
- * @param[out] None 
- * @retval     None 
+ * @brief      Initialize OS
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
  * @details   This function is called to initialize OS.
  *
  * @note      You must call this function first,before any other OS API function
- *					
- * @code      There is a example for useage of this function,as follows: 
- *        e.g.															 
- *            ...                   // Your target initial code. 
- *				
- *            OsInit();             // Initial OS. 				
- *            CreateTask(...);      // Create tasks.				
+ *
+ * @code      There is a example for useage of this function,as follows:
+ *        e.g.
+ *            ...                   // Your target initial code.
+ *
+ *            OsInit();             // Initial OS.
+ *            CreateTask(...);      // Create tasks.
  *            ...
  *            OsStart();            // Start multitask.
- * @endcode	
- *******************************************************************************		
+ * @endcode
+ *******************************************************************************
  */
 void CoInitOS(void)
 {
     InitSysTick();                /* Initialize system tick.                  */
-    InitInt();                    /* Initialize PendSV,SVC,SysTick interrupt  */	
-    CreateTCBList();              /* Create TCB list.                         */   
-#if CFG_EVENT_EN > 0				    
+    InitInt();                    /* Initialize PendSV,SVC,SysTick interrupt  */
+    CreateTCBList();              /* Create TCB list.                         */
+#if CFG_EVENT_EN > 0
     CreateEventList();            /* Create event control list.               */
-#endif  
+#endif
 #if CFG_KHEAP_EN > 0
     CoCreateKheap();              /* Create kernel heap within user define    */
-#endif   
-    OsSchedLock();                /* Lock Schedule                            */ 
-                                  /* Create first task -- IDLE task.          */ 
+#endif
+    OsSchedLock();                /* Lock Schedule                            */
+                                  /* Create first task -- IDLE task.          */
     CoCreateTask(                      CoIdleTask,
                                              NULL,
                                   CFG_LOWEST_PRIO,
                  &idle_stk[CFG_IDLE_STACK_SIZE-1],
                               CFG_IDLE_STACK_SIZE
                  );
-				                  /* Set PSP for CoIdleTask coming in */ 
+				                  /* Set PSP for CoIdleTask coming in */
 	SetEnvironment(&idle_stk[CFG_IDLE_STACK_SIZE-1]);
 }
 
 
 /**
  *******************************************************************************
- * @brief      Start multitask	 
- * @param[in]  None 	 
- * @param[out] None 	 
- * @retval     None	 
+ * @brief      Start multitask
+ * @param[in]  None
+ * @param[out] None
+ * @retval     None
  *
  * @par Description
  * @details    This function is called to start multitask.After it is called,
- *             OS start schedule task by priority or/and time slice.	
+ *             OS start schedule task by priority or/and time slice.
  * @note       This function must be called to start OS when you use CoOS,and must
  *             call after CoOsInit().
  *******************************************************************************
@@ -220,15 +220,15 @@ void CoStartOS(void)
 
 /**
  *******************************************************************************
- * @brief      Get OS version	   
- * @param[in]  None	 
- * @param[out] None  
- * @retval     The value is version of OS mutipled by 100.		 
+ * @brief      Get OS version
+ * @param[in]  None
+ * @param[out] None
+ * @retval     The value is version of OS mutipled by 100.
  *
  * @par Description
  * @details    This function is used to return the version number of CooCox OS.
  *             the return value corresponds to CooCox's version number multiplied
- *             by 100. In other words, version 1.02 would be returned as 102.         
+ *             by 100. In other words, version 1.02 would be returned as 102.
  *******************************************************************************
  */
 OS_VER CoGetOSVersion(void)

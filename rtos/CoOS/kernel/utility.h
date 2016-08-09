@@ -3,17 +3,17 @@
  * @file       utility.h
  * @version    V1.00    Initial version
  * @date       2009.06.26
- * @brief      Utility function header file 
- * @details    This file including some defines and declares related to utility 
- *             function.	
+ * @brief      Utility function header file
+ * @details    This file including some defines and declares related to utility
+ *             function.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef  _UTILITY_H
@@ -21,9 +21,9 @@
 
 
 /**
- * @struct  Time struct  utility.h  	
- * @brief   Time struct	 
- * @details This struct use to manage time 	 
+ * @struct  Time struct  utility.h
+ * @brief   Time struct
+ * @details This struct use to manage time
  */
 typedef struct SysTime
 {

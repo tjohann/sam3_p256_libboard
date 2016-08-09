@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2009, Atmel Corporation
  *
@@ -68,7 +68,7 @@
 
 /**
  *  \brief Calculate bit band alias address.
- * 
+ *
  *  Calculate the bit band alias address and return a pointer address to word.
  *
  *  \param addr The byte address of bitbanding bit.

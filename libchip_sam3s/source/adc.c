@@ -279,7 +279,7 @@ extern uint32_t ADC_GetConvertedData( Adc* pAdc, uint32_t dwChannel )
     uint32_t dwData = 0;
 
     assert( dwChannel < 16 ) ;
-		
+
     if ( 15 >= dwChannel )
     {
 		dwData=*(pAdc->ADC_CDR+dwChannel) ;

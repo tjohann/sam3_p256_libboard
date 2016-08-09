@@ -120,7 +120,7 @@ static uint32_t HIDDFunction_GetDescriptor(HIDDFunction *pHidd,
         case HIDGenericDescriptor_HID:
 
             /* Adjust length and send HID descriptor */
-            if (wLength > sizeof(HIDDescriptor1)) 
+            if (wLength > sizeof(HIDDescriptor1))
                 wLength = sizeof(HIDDescriptor1);
 
             TRACE_INFO_WP("HID(%d) ", wLength);

@@ -1,17 +1,17 @@
 /**
  *******************************************************************************
  * @file       mm.c
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
- * @brief      memory management implementation code of CooCox CoOS kernel.	
+ * @brief      memory management implementation code of CooCox CoOS kernel.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 /*---------------------------- Include ---------------------------------------*/
@@ -25,13 +25,13 @@ U32   MemoryIDVessel = 0;         /*!< Memory ID container.                   */
 
 /**
  *******************************************************************************
- * @brief      Create a memory partition	 
- * @param[in]  memBuf       Specify memory partition head address.		 
- * @param[in]  blockSize    Specify memory block size.  
+ * @brief      Create a memory partition
+ * @param[in]  memBuf       Specify memory partition head address.
+ * @param[in]  blockSize    Specify memory block size.
  * @param[in]  blockNum     Specify memory block number.
  * @param[out] None
  * @retval     E_CREATE_FAIL  Create memory partition fail.
- * @retval     others         Create memory partition successful.			 
+ * @retval     others         Create memory partition successful.
  *
  * @par Description
  * @details    This function is called to create a memory partition.
@@ -43,7 +43,7 @@ OS_MMID CoCreateMemPartition(U8* memBuf,U32 blockSize,U32 blockNum)
     U8        *memory;
     P_MemBlk  memBlk;
     memory = memBuf;
-	
+
 #if CFG_PAR_CHECKOUT_EN >0              /* Check validity of parameter        */
     if(memBuf == NULL)
     {
@@ -51,11 +51,11 @@ OS_MMID CoCreateMemPartition(U8* memBuf,U32 blockSize,U32 blockNum)
     }
     if(blockSize == 0)
     {
-        return 	E_CREATE_FAIL;	
+        return 	E_CREATE_FAIL;
     }
     if((blockSize&0x3) != 0)
     {
-        return 	E_CREATE_FAIL;	
+        return 	E_CREATE_FAIL;
     }
     if(blockNum<=1)
     {
@@ -71,10 +71,10 @@ OS_MMID CoCreateMemPartition(U8* memBuf,U32 blockSize,U32 blockNum)
             MemoryIDVessel |= (1<<i);   /* Yes,assign ID to this memory block */
             OsSchedUnlock();            /* Unlock schedule                    */
             MemoryTbl[i].memAddr   = memory;/* Initialize memory control block*/
-            MemoryTbl[i].freeBlock = memory;  	
+            MemoryTbl[i].freeBlock = memory;
             MemoryTbl[i].blockSize = blockSize;
             MemoryTbl[i].blockNum  = blockNum;
-            memBlk  = (P_MemBlk)memory;     /* Bulid list in this memory block*/ 
+            memBlk  = (P_MemBlk)memory;     /* Bulid list in this memory block*/
             for(j=0;j<blockNum-1;j++)
             {
                 memory = memory+blockSize;
@@ -92,11 +92,11 @@ OS_MMID CoCreateMemPartition(U8* memBuf,U32 blockSize,U32 blockNum)
 
 /**
  *******************************************************************************
- * @brief      Delete a memory partition	  
- * @param[in]  mmID     Specify	memory partition that want to delete.	
+ * @brief      Delete a memory partition
+ * @param[in]  mmID     Specify	memory partition that want to delete.
  * @param[out] None
  * @retval     E_INVALID_ID   The memory partition id passed was invalid,delete fail.
- * @retval     E_OK           Delete successful.			 
+ * @retval     E_OK           Delete successful.
  *
  * @par Description
  * @details    This function is called to Delete a memory partition.
@@ -114,37 +114,37 @@ StatusType CoDelMemoryPartition(OS_MMID mmID)
     {
         return E_INVALID_ID;
     }
-#endif	
+#endif
     OsSchedLock();                      /* Lock schedule                      */
     memCtl = &MemoryTbl[mmID];          /* Release memory control block       */
     MemoryIDVessel &= ~(1<<mmID);
     OsSchedUnlock();                    /* Unlock schedule                    */
-    
+
     memCtl->memAddr   = NULL;
-    memCtl->freeBlock = NULL;	
+    memCtl->freeBlock = NULL;
     memCtl->blockSize = 0;
-    memCtl->blockNum  = 0;	
+    memCtl->blockNum  = 0;
     return E_OK;                        /* Return OK                          */
 }
 
 
 /**
  *******************************************************************************
- * @brief      Get free block number in a memory partition	  
- * @param[in]  mmID    Specify memory partition.	
+ * @brief      Get free block number in a memory partition
+ * @param[in]  mmID    Specify memory partition.
  *
- * @param[out] E_INVALID_ID  Invalid ID was passed and get counter failure.	  
+ * @param[out] E_INVALID_ID  Invalid ID was passed and get counter failure.
  * @param[out] E_OK          Get current counter successful.
- * @retval     fbNum         The number of free block.	
+ * @retval     fbNum         The number of free block.
  *
  * @par Description
- * @details    This function is called to get free block number in a memory 
+ * @details    This function is called to get free block number in a memory
  *             partition.
  *******************************************************************************
  */
 U32 CoGetFreeBlockNum(OS_MMID mmID,StatusType* perr)
 {
-    U32       fbNum;	
+    U32       fbNum;
     P_MM      memCtl;
     P_MemBlk  memBlk;
 #if CFG_PAR_CHECKOUT_EN >0              /* Check validity of parameter        */
@@ -158,7 +158,7 @@ U32 CoGetFreeBlockNum(OS_MMID mmID,StatusType* perr)
         *perr = E_INVALID_ID;           /* Invalid memory id,return 0         */
         return 0;
     }
-#endif	
+#endif
     memCtl = &MemoryTbl[mmID];
     OsSchedLock();                      /* Lock schedule                      */
     memBlk = (P_MemBlk)(memCtl->freeBlock);/* Get the free item in memory list*/
@@ -169,19 +169,19 @@ U32 CoGetFreeBlockNum(OS_MMID mmID,StatusType* perr)
         memBlk = memBlk->nextBlock;     /* Get next free iterm                */
     }
     OsSchedUnlock();                    /* Unlock schedul                     */
-    *perr = E_OK;							   
+    *perr = E_OK;
     return fbNum;                       /* Return the counter of free item    */
 }
 
 
 /**
  *******************************************************************************
- * @brief      Get a memory buffer from memory partition	    
- * @param[in]  mmID     Specify	memory partition that want to assign buffer.	
+ * @brief      Get a memory buffer from memory partition
+ * @param[in]  mmID     Specify	memory partition that want to assign buffer.
  * @param[out] None
  * @retval     NULL     Assign buffer fail.
- * @retval     others   Assign buffer successful,and return the buffer pointer.	
- *		 
+ * @retval     others   Assign buffer successful,and return the buffer pointer.
+ *
  * @par Description
  * @details    This function is called to Delete a memory partition.
  *******************************************************************************
@@ -200,8 +200,8 @@ void* CoGetMemoryBuffer(OS_MMID mmID)
         return NULL;
     }
 #endif
-    memCtl = &MemoryTbl[mmID];	
-    OsSchedLock();                      /* Lock schedule                      */	        
+    memCtl = &MemoryTbl[mmID];
+    OsSchedLock();                      /* Lock schedule                      */
     if(memCtl->freeBlock == NULL )    /* Is there no free item in memory list */
     {
         OsSchedUnlock();                /* Unlock schedule                    */
@@ -217,13 +217,13 @@ void* CoGetMemoryBuffer(OS_MMID mmID)
 
 /**
  *******************************************************************************
- * @brief      Free a memory buffer to memory partition	 
+ * @brief      Free a memory buffer to memory partition
  * @param[in]  mmID    Specify	memory partition.
- * @param[in]  buf     Specify	memory buffer that want to free.	
+ * @param[in]  buf     Specify	memory buffer that want to free.
  * @param[out] None
  * @retval     E_INVALID_ID          The memory partition id passed was invalid.
- * @retval     E_INVALID_PARAMETER   The parameter passed was invalid.	
- * @retval     E_OK                  Free successful.	 
+ * @retval     E_INVALID_PARAMETER   The parameter passed was invalid.
+ * @retval     E_OK                  Free successful.
  *
  * @par Description
  * @details    This function is called to Delete a memory partition.
@@ -246,7 +246,7 @@ StatusType CoFreeMemoryBuffer(OS_MMID mmID,void* buf)
     {
         return E_INVALID_PARAMETER;
     }
-#endif	
+#endif
 
     memCtl = &MemoryTbl[mmID];
 #if CFG_PAR_CHECKOUT_EN >0              /* Check validity of parameter        */
@@ -259,8 +259,8 @@ StatusType CoFreeMemoryBuffer(OS_MMID mmID,void* buf)
         return E_INVALID_PARAMETER;
     }
     if(((U32)buf - (U32)(memCtl->memAddr))%(memCtl->blockSize) != 0)
-    {	
-        return E_INVALID_PARAMETER;	
+    {
+        return E_INVALID_PARAMETER;
     }
 #endif
     memBlk = (P_MemBlk)buf;             /* Reset the first free item          */

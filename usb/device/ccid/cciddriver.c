@@ -84,10 +84,10 @@
 #define __attribute__(...) /* IAR */
 #endif                     /* IAR */
 
-/** 
+/**
  * \typedef CCIDDriverConfigurationDescriptors
- * \brief List of descriptors that make up the configuration descriptors of a 
- *        device using the CCID driver. 
+ * \brief List of descriptors that make up the configuration descriptors of a
+ *        device using the CCID driver.
  */
 
 typedef struct _CCIDDriverConfigurationDescriptors
@@ -660,15 +660,15 @@ const USBDDriverDescriptors ccidDriverDescriptors = {
  *      Internal functions
  *------------------------------------------------------------------------------*/
 
-/** 
+/**
  * Response Pipe, Bulk-IN Messages
  * Return the Slot Status to the host
- * Answer to:            
+ * Answer to:
  * PC_to_RDR_IccPowerOff
  * PC_to_RDR_GetSlotStatus
- * PC_to_RDR_IccClock 
- * PC_to_RDR_T0APDU 
- * PC_to_RDR_Mechanical 
+ * PC_to_RDR_IccClock
+ * PC_to_RDR_T0APDU
+ * PC_to_RDR_Mechanical
  * PC_to_RDR_Abort and Class specific ABORT request
  */
 

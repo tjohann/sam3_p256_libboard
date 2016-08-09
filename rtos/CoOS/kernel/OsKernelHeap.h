@@ -1,19 +1,19 @@
 /**
  *******************************************************************************
  * @file       kernelHeap.h
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
- * @brief      Header file related to memory management	
- * @details    This file including some defines and function declare related to 
- *             kernel heap management. 
+ * @brief      Header file related to memory management
+ * @details    This file including some defines and function declare related to
+ *             kernel heap management.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef  _KERNELHEAP_H
@@ -30,7 +30,7 @@ typedef struct KennelHeap
 typedef struct UsedMemBlk
 {
   void* nextMB;
-  void* preMB;	
+  void* preMB;
 }UMB,*P_UMB;
 
 

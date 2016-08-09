@@ -1,25 +1,25 @@
 /**
  *******************************************************************************
  * @file       ccrtos.h
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
  * @brief      API header file of CooCox CoOS.
- * @details    This file including all API functions's declare of CooCox CoOS.	
+ * @details    This file including all API functions's declare of CooCox CoOS.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 #ifndef _CCRTOS_H
 #define _CCRTOS_H
 #include "OsConfig.h"
 /*---------------------------- Type Define  ----------------------------------*/
-typedef signed   char      S8;              
-typedef unsigned char      U8;	
+typedef signed   char      S8;
+typedef unsigned char      U8;
 typedef short              S16;
 typedef unsigned short     U16;
 typedef int                S32;
@@ -75,16 +75,16 @@ typedef void               (*vFUNCPtr)(void);
 #define E_TASK_WAIT_OTHER     (StatusType)15
 #define E_EXCEED_MAX_NUM      (StatusType)16
 #define E_NOT_IN_DELAY_LIST   (StatusType)17
-#define E_SEV_REQ_FULL        (StatusType)18	
-#define E_NOT_FREE_ALL        (StatusType)19	
-#define E_PROTECTED_TASK      (StatusType)20 
-#define E_OS_IN_LOCK          (StatusType)21												
+#define E_SEV_REQ_FULL        (StatusType)18
+#define E_NOT_FREE_ALL        (StatusType)19
+#define E_PROTECTED_TASK      (StatusType)20
+#define E_OS_IN_LOCK          (StatusType)21
 
 
 /*---------------------------- Wait Opreation type  --------------------------*/
 #define OPT_WAIT_ALL          0         /*!< Wait for all flags.              */
 #define OPT_WAIT_ANY          1         /*!< Wait for any one of flags.       */
-#define OPT_WAIT_ONE          2         /*!< Waot for one flag.               */	
+#define OPT_WAIT_ONE          2         /*!< Waot for one flag.               */
 
 
 /*---------------------------- Delete Opreation type  ------------------------*/
@@ -142,7 +142,7 @@ extern StatusType  CoResetTaskDelayTick(OS_TID taskID,U32 ticks);
 extern StatusType  CoTimeDelay(U8 hour,U8 minute,U8 sec,U16 millsec);
 
 
-/* Implement in file "timer.c"     */ 
+/* Implement in file "timer.c"     */
 extern StatusType  CoDelTmr(OS_TCID tmrID);
 extern StatusType  CoStopTmr(OS_TCID tmrID);
 extern StatusType  CoStartTmr(OS_TCID tmrID);

@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2008, Atmel Corporation
  *
@@ -34,10 +34,10 @@
 #ifndef MSDFUNCTION_H
 #define MSDFUNCTION_H
 
-/** \addtogroup usbd_msd 
+/** \addtogroup usbd_msd
  *@{
  */
- 
+
 /*------------------------------------------------------------------------------
  *         Headers
  *------------------------------------------------------------------------------*/

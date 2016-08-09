@@ -22,7 +22,7 @@
 @REM but they are listed at the end of this file for reference.
 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\common\bin\cspybat" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\arm\bin\armproc.dll" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\arm\bin\armsim2.dll"  %1 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\arm\bin\<libsupport_plugin>" --backend -B "--endian=little" "--cpu=Cortex-M3" "--fpu=None" "-p" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\arm\CONFIG\debugger\Atmel\ioat91sam3s4.ddf" "--semihosting=none" "--device=AT91SAM3S4" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\common\bin\cspybat" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\arm\bin\armproc.dll" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\arm\bin\armsim2.dll"  %1 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\arm\bin\<libsupport_plugin>" --backend -B "--endian=little" "--cpu=Cortex-M3" "--fpu=None" "-p" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 5.4 Evaluation\arm\CONFIG\debugger\Atmel\ioat91sam3s4.ddf" "--semihosting=none" "--device=AT91SAM3S4"
 
 
 @REM Loaded plugins:

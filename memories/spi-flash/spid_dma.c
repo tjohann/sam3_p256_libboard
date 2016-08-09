@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2008, Atmel Corporation
  *
@@ -178,7 +178,7 @@ static void configureLinkList(AT91S_SPI *pSpiHw,
                                        | AT91C_HDMA_DST_ADDRESS_MODE_INCR
                                        ;
         dmaRxLinkList[1].descriptor    = 0;
-        
+
         dmaTxLinkList[0].descriptor    = (unsigned int)&dmaTxLinkList[1];
         dmaTxLinkList[1].sourceAddress = (unsigned int)pCommand->pData;
         dmaTxLinkList[1].destAddress   = (unsigned int)&pSpiHw->SPI_TDR;
@@ -234,15 +234,15 @@ unsigned char SPID_Configure(Spid *pSpid, AT91S_SPI *pSpiHw, unsigned char spiId
 
     // Enable the SPI Peripheral
     PERIPH_ENABLE(pSpid->spiId);
-    
+
     // Execute a software reset of the SPI twice
     WRITE_SPI(pSpiHw, SPI_CR, AT91C_SPI_SWRST);
     WRITE_SPI(pSpiHw, SPI_CR, AT91C_SPI_SWRST);
 
     // Configure SPI in Master Mode with No CS selected !!!
     WRITE_SPI(pSpiHw, SPI_MR, AT91C_SPI_MSTR | AT91C_SPI_MODFDIS | AT91C_SPI_PCS);
-     
-    // Disable the PDC transfer    
+
+    // Disable the PDC transfer
     WRITE_SPI(pSpiHw, SPI_PTCR, AT91C_PDC_RXTDIS | AT91C_PDC_TXTDIS);
 
     // Disable the SPI TX & RX
@@ -273,7 +273,7 @@ void SPID_ConfigureCS(Spid *pSpid, unsigned char cs, unsigned int csr)
     // Disable the SPI Peripheral
     PERIPH_DISABLE(pSpid->spiId);
 }
-    
+
 //------------------------------------------------------------------------------
 /// Starts a SPI master transfer. This is a non blocking function. It will
 /// return as soon as the transfer is started.
@@ -287,17 +287,17 @@ unsigned char SPID_SendCommand(Spid *pSpid, SpidCmd *pCommand)
 {
     AT91S_SPI *pSpiHw = pSpid->pSpiHw;
      unsigned int spiMr;
-         
+
      // Try to get the dataflash semaphore
      if (pSpid->semaphore == 0) {
-    
+
          return SPID_ERROR_LOCK;
     }
      pSpid->semaphore--;
 
     // Enable the SPI Peripheral
     PERIPH_ENABLE(pSpid->spiId);
-    
+
     // Disable PDC transmitter and receiver
     WRITE_SPI(pSpiHw, SPI_PTCR, AT91C_PDC_RXTDIS | AT91C_PDC_TXTDIS);
 
@@ -313,7 +313,7 @@ unsigned char SPID_SendCommand(Spid *pSpid, SpidCmd *pCommand)
 
     // Initialize the callback
     pSpid->pCurrentCommand = pCommand;
-    
+
     // Enable the SPI TX & RX
     WRITE_SPI(pSpiHw, SPI_CR, AT91C_SPI_SPIEN);
 
@@ -324,7 +324,7 @@ unsigned char SPID_SendCommand(Spid *pSpid, SpidCmd *pCommand)
     DMA_EnableIt(  (DMA_CBTC << DMA_CHANNEL_0)
                  | (DMA_CBTC << DMA_CHANNEL_1));
 
-    return 0;    
+    return 0;
 }
 
 //------------------------------------------------------------------------------
@@ -353,16 +353,16 @@ void SPID_Handler(Spid *pSpid)
     DMA_Disable();
     // Disable DMA Peripheral
     PERIPH_DISABLE(AT91C_ID_HDMA);
-    
+
     // Release the dataflash semaphore
     pSpid->semaphore++;
-        
+
     // Invoke the callback associated with the current command
     if (pSpidCmd && pSpidCmd->callback) {
-    
+
         pSpidCmd->callback(0, pSpidCmd->pArgument);
     }
-        
+
 }
 
 //------------------------------------------------------------------------------

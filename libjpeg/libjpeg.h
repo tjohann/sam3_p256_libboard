@@ -73,10 +73,10 @@ typedef enum _EJpegMethod
 {
   /** slow but accurate integer algorithm */
 	JPG_METHOD_ISLOW,
-  
+
   /** faster, less accurate integer method */
 	JPG_METHOD_IFAST,
-  
+
   /** floating-point: accurate, fast on fast HW */
 	JPG_METHOD_FLOAT
 } EJpegMethod ;

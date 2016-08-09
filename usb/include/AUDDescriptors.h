@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2010, Atmel Corporation
  *
@@ -56,9 +56,9 @@
 /*----------------------------------------------------------------------------
  *         Includes
  *----------------------------------------------------------------------------*/
- 
+
 #include <stdint.h>
- 
+
 /*----------------------------------------------------------------------------
  *         Definitions
  *----------------------------------------------------------------------------*/
@@ -212,7 +212,7 @@
  * This section lists the existing versions of the Audio class specification.
  * - \ref AUDHeaderDescriptor_AUD1_00
  */
- 
+
 /** Indentifies the USB audio specification release 1.00.*/
 #define AUDHeaderDescriptor_AUD1_00                 0x0100
 /**     @}*/
@@ -287,7 +287,7 @@
  * -# \ref AUDFeatureUnitDescriptor_VOLUME
  * -# \ref AUDFeatureUnitDescriptor_BASS
  * -# \ref AUDFeatureUnitDescriptor_MID
- * -# \ref AUDFeatureUnitDescriptor_TREBLE     
+ * -# \ref AUDFeatureUnitDescriptor_TREBLE
  */
 /** Channel mute control. */
 #define AUDFeatureUnitDescriptor_MUTE               (1 << 0)
@@ -366,7 +366,7 @@ typedef struct _AUDEndpointDescriptor {
    uint8_t bRefresh;
    /** Address of the associated feedback endpoint if any. */
    uint8_t bSyncAddress;
-                                   
+
 } __attribute__ ((packed)) AUDEndpointDescriptor; /* GCC */
 
 /**
@@ -491,7 +491,7 @@ typedef struct _AUDFeatureUnitDescriptor {
     /** Descriptor type (AUDGenericDescriptor_INTERFACE). */
     uint8_t bDescriptorType;
     /** Descriptor subtype (AUDGenericDescriptor_FEATURE). */
-    uint8_t bDescriptorSubType; 
+    uint8_t bDescriptorSubType;
     /** Identifier of this feature unit. */
     uint8_t bUnitID;
     /** Identifier of the unit or terminal this feature unit is connected to. */

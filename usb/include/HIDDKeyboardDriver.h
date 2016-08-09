@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2008, Atmel Corporation
  *
@@ -29,13 +29,13 @@
 
 /**
  * \file
- * 
+ *
  * \section Purpose
- * 
+ *
  * Definition of methods for using a HID keyboard device driver.
- * 
+ *
  * \section Usage
- * 
+ *
  * -# Re-implement the USBDCallbacks_RequestReceived callback to forward
  *    requests to HIDDKeyboardDriver_RequestHandler. This is done
  *    automatically unless the NOAUTOCALLBACK symbol is defined during

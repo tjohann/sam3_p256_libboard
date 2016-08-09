@@ -34,18 +34,18 @@
  *        Definitions
  *----------------------------------------------------------------------------*/
 
-/** 
+/**
  * \file
  * NandFlash Maximum Supported Values
  * Since no memory allocation is available, limits have been set on various
  * characteristics of a NandFlash chip:
- * 
+ *
  * Maximums
  * - NandCommon_MAXNUMBLOCKS
  * - NandCommon_MAXNUMPAGESPERBLOCK
  * - NandCommon_MAXPAGESIZE
  */
- 
+
 /** Maximum number of blocks in a device */
 #define NandCommon_MAXNUMBLOCKS             1024 //2048
 
@@ -69,16 +69,16 @@
 #define NandCommon_MAXSPAREEXTRABYTES       78 //38
 
 
-/** 
+/**
  * NandFlash Error Codes
  * NandFlash API methods return either 0 (indicating that there was no error),
  * or one of the following error codes:
- * 
- * - NandCommon_ERROR_NOMOREBLOCKS      
- * - NandCommon_ERROR_BLOCKNOTMAPPED    
- * - NandCommon_ERROR_OUTOFBOUNDS       
- *- NandCommon_ERROR_MAPPINGNOTFOUND   
- *  - NandCommon_ERROR_CANNOTREAD        
+ *
+ * - NandCommon_ERROR_NOMOREBLOCKS
+ * - NandCommon_ERROR_BLOCKNOTMAPPED
+ * - NandCommon_ERROR_OUTOFBOUNDS
+ *- NandCommon_ERROR_MAPPINGNOTFOUND
+ *  - NandCommon_ERROR_CANNOTREAD
  */
 
 /** No more blocks can be allocated for a write operation.*/

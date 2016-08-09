@@ -1,27 +1,27 @@
 /**
  *******************************************************************************
  * @file       flag.h
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
  * @brief      Evnet flag management header file
- * @details    This file including some defines and declares about flag management.	
+ * @details    This file including some defines and declares about flag management.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef _FLAG_H
 #define _FLAG_H
 
 /**
- * @struct  FlagNode  flag.h 	
+ * @struct  FlagNode  flag.h
  * @brief   Flag node struct
- * @details 	 	
+ * @details
  */
 typedef struct FlagNode
 {
@@ -34,9 +34,9 @@ typedef struct FlagNode
 
 
 /**
- * @struct  Flag    flag.h  	
+ * @struct  Flag    flag.h
  * @brief   Flag control block
- * @details This struct use to mange event flag.	
+ * @details This struct use to mange event flag.
  */
 typedef struct Flag
 {
@@ -49,7 +49,7 @@ typedef struct Flag
 
 
 /*---------------------------- Variable declare ------------------------------*/
-extern FCB FlagCrl;					
+extern FCB FlagCrl;
 
 /*---------------------------- Function declare ------------------------------*/
 extern void        RemoveLinkNode(P_FLAG_NODE pnode);

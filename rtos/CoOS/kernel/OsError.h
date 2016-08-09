@@ -1,24 +1,24 @@
 /**
  *******************************************************************************
- * @file       error.h	
- * @version    V1.13    
+ * @file       error.h
+ * @version    V1.13
  * @date       2010.04.26
- * @brief      rror dispose header file	
+ * @brief      rror dispose header file
  * @details    This file use to dispose error which from error configure for OS.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef _ERROR_H
 #define _ERROR_H
 
-#if (CFG_SYSTICK_FREQ > 1000) ||(CFG_SYSTICK_FREQ < 1) 
+#if (CFG_SYSTICK_FREQ > 1000) ||(CFG_SYSTICK_FREQ < 1)
     #error " OsConfig.h System Tick time must between 1ms and 1s!"
 #endif
 
@@ -74,11 +74,11 @@
     #endif
 
 
-    #if CFG_QUEUE_EN > 0 
+    #if CFG_QUEUE_EN > 0
         #if CFG_MAX_QUEUE > CFG_MAX_EVENT
-        #error " config.h, CFG_MAX_QUEUE must be <= CFG_MAX_EVENT! "	
+        #error " config.h, CFG_MAX_QUEUE must be <= CFG_MAX_EVENT! "
         #endif
-    #endif	
+    #endif
 #endif      /* CFG_EVENT_EN  */
 
 #endif      /* _ERROR_H      */

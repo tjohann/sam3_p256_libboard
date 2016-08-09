@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2008, Atmel Corporation
  *
@@ -69,7 +69,7 @@
 /*------------------------------------------------------------------------------
  *         Definitions
  *------------------------------------------------------------------------------*/
-    
+
 /** Size of the input and output report, in bytes */
 #define HIDDTransferDriver_REPORTSIZE               32
 

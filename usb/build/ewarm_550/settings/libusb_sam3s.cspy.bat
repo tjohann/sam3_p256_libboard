@@ -22,7 +22,7 @@
 @REM but they are listed at the end of this file for reference.
 
 
-"E:\PROGRAMS\IAR_ARM_5.50_EW\common\bin\cspybat" "E:\PROGRAMS\IAR_ARM_5.50_EW\arm\bin\armproc.dll" "E:\PROGRAMS\IAR_ARM_5.50_EW\arm\bin\armsim2.dll"  %1 --plugin "E:\PROGRAMS\IAR_ARM_5.50_EW\arm\bin\<libsupport_plugin>" --backend -B "--endian=little" "--cpu=Cortex-M3" "--fpu=None" "--semihosting=none" 
+"E:\PROGRAMS\IAR_ARM_5.50_EW\common\bin\cspybat" "E:\PROGRAMS\IAR_ARM_5.50_EW\arm\bin\armproc.dll" "E:\PROGRAMS\IAR_ARM_5.50_EW\arm\bin\armsim2.dll"  %1 --plugin "E:\PROGRAMS\IAR_ARM_5.50_EW\arm\bin\<libsupport_plugin>" --backend -B "--endian=little" "--cpu=Cortex-M3" "--fpu=None" "--semihosting=none"
 
 
 @REM Loaded plugins:

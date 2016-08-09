@@ -45,7 +45,7 @@
  * The original package can be obtained here: http://www.ijg.org/
  *
  */
- 
+
 /*----------------------------------------------------------------------------
  *        Local functions
  *----------------------------------------------------------------------------*/
@@ -85,33 +85,33 @@ static void _init_sarray_imcu_row(JSAMPIMAGE *image,JSAMPLE *src,uint32_t y_pos,
     JSAMPARRAY ay = (*image)[0];
     JSAMPARRAY au = (*image)[1];
     JSAMPARRAY av = (*image)[2];
-    JSAMPROW ry0,ru,rv,ry1;    
-    
+    JSAMPROW ry0,ru,rv,ry1;
+
     int i,j;
     for( i = 0; i < rows/2 ;i++)
     {
         r0 = & src[ (i * 2 + y_pos) * width * 2];
         r1 = & src[ (i * 2 + y_pos + 1) * width * 2];
-        
+
         ry0 = ay[i*2];
         ry1 = ay[i*2+1];
-        
+
         ru = au[i];
         rv = av[i];
-        
+
         for(j = 0; j < width /2; j++)
         {
             ry0[j * 2] = r0[j*4];
             ry1[j * 2] = r1[j*4];
             ry0[j * 2 + 1] = r0[j*4+2];
             ry1[j * 2 +1] = r1[j*4+2];
-            
+
             ru[j] = (r0[ j * 4 + 1] + r1[j*4+1])/2;
             rv[j] = (r0[ j * 4 + 3] + r1[j*4+3])/2;
-            
+
         }
-        
-        
+
+
     }
 }
 
@@ -128,9 +128,9 @@ extern uint32_t ijg_compress_raw_no_padding( SJpegData* pData )
 {
     struct jpeg_compress_struct cinfo ;
     struct jpeg_error_mgr       jerr ;
-    
+
     JSAMPIMAGE  raw_image;          /* pointer to raw pointer */
-    
+
     uint32_t lines;
 
     assert( pData != NULL ) ;
@@ -157,23 +157,23 @@ extern uint32_t ijg_compress_raw_no_padding( SJpegData* pData )
     cinfo.comp_info[1].v_samp_factor = 1;
     cinfo.comp_info[2].h_samp_factor = 1;
     cinfo.comp_info[2].v_samp_factor = 1;
-    
+
     cinfo.dct_method = pData->eMethod ;
     jpeg_set_quality( &cinfo, pData->dwQuality, true ) ;
     jpeg_start_compress( &cinfo, true ) ;
-    
+
     lines = cinfo.max_v_samp_factor * DCTSIZE;
-    
+
     /* allocate memory for raw_image*/
     _alloc_sarray_imcu_row(&raw_image,&cinfo);
 
     while ( cinfo.next_scanline < cinfo.image_height )
-    {  
+    {
         _init_sarray_imcu_row(&raw_image,pData->pucSrc,cinfo.next_scanline,cinfo.image_width,lines);
         jpeg_write_raw_data( &cinfo, raw_image, lines ) ;
-        
+
     }
-    
+
     /* free allocated memory*/
     free(raw_image);
     jpeg_finish_compress( &cinfo ) ;
@@ -220,7 +220,7 @@ extern uint32_t ijg_compress( SJpegData* pData )
     return 0 ;
 }
 
-/** 
+/**
  * \brief Entry for decompression
  *
  * \param pData Pointer to jpeg information given by main application
@@ -289,7 +289,7 @@ extern uint32_t JpegData_Init( SJpegData* pData )
     return 0 ;
 }
 
-/** 
+/**
  * \brief Set the source data of the jpeg compression
  *
  * \param pData pointer to jpeg information given by main application
@@ -304,7 +304,7 @@ extern uint32_t JpegData_SetSource( SJpegData* pData, uint8_t* pucSrc, uint32_t 
     return 0 ;
 }
 
-/** 
+/**
  * \brief Set destination for jpeg data
  *
  * \param pData Pointer to jpeg information given by main application
@@ -321,7 +321,7 @@ extern uint32_t JpegData_SetDestination( SJpegData* pData, uint8_t* pucDst, uint
     return 0 ;
 }
 
-/** 
+/**
  * \brief Set dimensions of image
  *
  * \param pData pointer to jpeg information given by main application
@@ -340,7 +340,7 @@ extern uint32_t JpegData_SetDimensions( SJpegData* pData, uint32_t dwWidth, uint
     return 0 ;
 }
 
-/** 
+/**
  * \brief Set parameters like quality, compression method and input format
  *
  * \param pData pointer to jpeg information given by main application
@@ -356,9 +356,9 @@ extern uint32_t JpegData_SetParameters( SJpegData* pData, uint32_t dwQuality, EJ
     return 0 ;
 }
 
-/** 
+/**
  * \brief Set callback function for using in main application
- * 
+ *
  * \param pData pointer to jpeg information given by main application
  */
 extern uint32_t JpegData_SetCallback( SJpegData* pData, uint32_t (*cbk)( uint8_t*, uint32_t ) )

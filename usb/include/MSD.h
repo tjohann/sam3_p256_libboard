@@ -34,9 +34,9 @@
  *
  * See
  * - <a
- * href="http://www.usb.org/developers/devclass_docs/usb_msc_overview_1.2.pdf"> 
+ * href="http://www.usb.org/developers/devclass_docs/usb_msc_overview_1.2.pdf">
  * USB Mass Storage Class Spec. Overview</a>
- * - <a href="http://www.usb.org/developers/devclass_docs/usbmassbulk_10.pdf"> 
+ * - <a href="http://www.usb.org/developers/devclass_docs/usbmassbulk_10.pdf">
  * USB Mass Storage Class Bulk-Only Transport</a>
  *
  * \section Usage

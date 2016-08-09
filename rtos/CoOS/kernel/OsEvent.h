@@ -1,19 +1,19 @@
 /**
  *******************************************************************************
- * @file       event.h	
- * @version    V1.13    
+ * @file       event.h
+ * @version    V1.13
  * @date       2010.04.26
  * @brief      Event management header file
- * @details    This file including some defines and declares related to event 
+ * @details    This file including some defines and declares related to event
  *             (semaphore,mailbox,queque) management.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef _EVENT_H
@@ -26,10 +26,10 @@
 
 
 /**
- * @struct  EventCtrBlk  event.h	  	
+ * @struct  EventCtrBlk  event.h
  * @brief   Event control block
  * @details This struct is use to manage event,
- *          e.g. semaphore,mailbox,queue.	
+ *          e.g. semaphore,mailbox,queue.
  */
 typedef struct EventCtrBlk
 {
@@ -49,10 +49,10 @@ extern ECB  EventTbl[CFG_MAX_EVENT];    /*!< Table use to save TCB.           */
 /*!< Create a event   */
 extern P_ECB      CreatEvent(U8 eventType,U8 eventSortType,void* eventPtr);
 
-/*!< Remove a task from wait list */	
+/*!< Remove a task from wait list */
 extern void       EventTaskToWait(P_ECB pecb,P_OSTCB ptcb);
 extern StatusType DeleteEvent(P_ECB pecb,U8 opt);   /*!< Delete a event.      */
 extern void       EventTaskToRdy(P_ECB pecb); /*!< Insert a task to ready list*/
-extern void       CreateEventList(void);    /*!< Create a event list.         */			
+extern void       CreateEventList(void);    /*!< Create a event list.         */
 extern void       RemoveEventWaittingList(P_OSTCB ptcb);
-#endif  
+#endif

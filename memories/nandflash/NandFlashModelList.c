@@ -88,7 +88,7 @@ const struct NandFlashModel nandFlashModelList[NandFlashModelList_SIZE] = {
 	{0x59,   NandFlashModel_DATABUS16,   512,    128,   16,    &nandSpareScheme512},
 
 	{0x71,   NandFlashModel_DATABUS8,    512,    256,   16,    &nandSpareScheme512},
-	
+
 /* Large blocks devices. Parameters must be fetched from the extended I */
 #define OPTIONS     NandFlashModel_COPYBACK
 
@@ -106,7 +106,7 @@ const struct NandFlashModel nandFlashModelList[NandFlashModelList_SIZE] = {
 	{0xDA,   NandFlashModel_DATABUS8  | OPTIONS,   0,    256, 0,   &nandSpareScheme2048},
 	{0xBA,   NandFlashModel_DATABUS16 | OPTIONS,   0,    256, 0,  &nandSpareScheme2048},
 	{0xCA,   NandFlashModel_DATABUS16 | OPTIONS,   0,    256, 0,  &nandSpareScheme2048},
-	
+
 	{0xAC,   NandFlashModel_DATABUS8  | OPTIONS,   0,    512, 0,  &nandSpareScheme2048},
 	{0xDC,   NandFlashModel_DATABUS8  | OPTIONS,   0,    512, 0,  &nandSpareScheme2048},
 	{0xBC,   NandFlashModel_DATABUS16 | OPTIONS,   0,    512, 0,  &nandSpareScheme2048},

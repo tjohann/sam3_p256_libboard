@@ -163,7 +163,7 @@ extern void SPIM_Handler( void )
     }
     /* Release the semaphore to notify the end of transfer */
     xSemaphoreGiveFromISR( pSpimRwData->txvSemaphore, &xHigherPriorityTaskWoken );
-    
+
     /* We may want to switch to the SPIM task, if this message has made
     it the highest priority task that is ready to execute. */
     portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );
@@ -415,7 +415,7 @@ extern ESpimStatus SPIM_TransferBuffer(
     /* Poll the end of transfer waiting that ISR releases the semaphore  */
      if( xSemaphoreTake( pSpimRwData->txvSemaphore, portMAX_DELAY ) != pdTRUE )
          return SPIM_ERROR;
-     
+
      /* Some data may still be pending in the TDR and in the shift register */
      if (pInBuffer == NULL) {
         SPI_EnableIt( pSpi, SPI_IER_TXEMPTY ) ;

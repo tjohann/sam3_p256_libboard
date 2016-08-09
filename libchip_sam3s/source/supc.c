@@ -145,7 +145,7 @@ void SUPC_DisableRtc( Supc* pSupc )
 void SUPC_SetBodSampling( Supc* pSupc, uint32_t dwMode )
 {
     assert( (dwMode & ~AT91C_SUPC_BODSMPL) == 0 ) ;
-    
+
     pSupc->SUPC_BOMR &= ~AT91C_SUPC_BODSMPL;
     pSupc->SUPC_BOMR |= dwMode ;
 }
@@ -177,7 +177,7 @@ void SUPC_Shutdown( Supc* pSupc )
 void SUPC_SetWakeUpSources( Supc* pSupc, uint32_t dwSources )
 {
     assert( (dwSources & ~0x0000000B) == 0 ) ;
-    
+
     pSupc->SUPC_WUMR &= ~0x0000000B;
     pSupc->SUPC_WUMR |= dwSources ;
 }
@@ -189,7 +189,7 @@ void SUPC_SetWakeUpSources( Supc* pSupc, uint32_t dwSources )
 void SUPC_SetWakeUpInputs( Supc* pSupc, uint32_t dwInputs )
 {
     assert( (dwInputs & ~0xFFFF) == 0 ) ;
-    
+
     pSupc->SUPC_WUIR &= ~0xFFFF ;
     pSupc->SUPC_WUIR |= dwInputs ;
 }

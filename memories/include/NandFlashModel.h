@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2009, Atmel Corporation
  *
@@ -33,7 +33,7 @@
  * Type and methods for manipulating NandFlash models.
  *
  * -# Find the model of a NandFlash using its device ID with the NandFlashModel_Find function.
- *   
+ *
  * -# Retrieve parameters of a NandFlash model using the following functions:
  *      - NandFlashModel_GetDeviceId
  *      - NandFlashModel_GetDeviceSizeInBlocks

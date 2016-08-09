@@ -2,19 +2,19 @@
 /**
  *******************************************************************************
  * @file       serviceReq.h
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
- * @brief      Header file	related to service request	
+ * @brief      Header file	related to service request
  * @details    This file including some defines and function declare related to
  *             service request.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef _SERVICEREQ_H
@@ -37,7 +37,7 @@ typedef struct ServiceReqCell
 typedef struct ServiceReqQueue
 {
     U8    cnt;
-    U8    head;    
+    U8    head;
     SQC   cell[CFG_MAX_SERVICE_REQUEST];
 }SRQ,*P_SRQ;
 

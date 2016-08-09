@@ -112,8 +112,8 @@ extern int _read(int file, char *ptr, int len)
 extern int _write( int file, char *ptr, int len )
 {
     int iIndex ;
-    
-    
+
+
 //    for ( ; *ptr != 0 ; ptr++ )
     for ( iIndex=0 ; iIndex < len ; iIndex++, ptr++ )
     {
@@ -132,7 +132,7 @@ extern void _exit( int status )
 
 extern void _kill( int pid, int sig )
 {
-    return ; 
+    return ;
 }
 
 extern int _getpid ( void )

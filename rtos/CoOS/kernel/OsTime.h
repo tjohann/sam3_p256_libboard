@@ -1,19 +1,19 @@
 /**
  *******************************************************************************
  * @file       task.c
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
  * @brief      Header file related to time management
- * @details    Thie file including some data declare related to time managment. 	
+ * @details    Thie file including some data declare related to time managment.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
-  
+ */
+
 #ifndef _TIME_H
 #define _TIME_H
 

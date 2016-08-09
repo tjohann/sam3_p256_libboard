@@ -99,15 +99,15 @@
 /** USB Wake up signaling supported on card insertion and removal */
 #define CCID_FEATURES_WAKEUP     0x00100000
 
-/*------------------------------------------------------------------------------ 
+/*------------------------------------------------------------------------------
 
- *         Types                                                                
+ *         Types
 
  *------------------------------------------------------------------------------*/
 
 /**
  * \typedef S_ccid_bulk_in_header
- * \brief Bulk CCID Message header structure 
+ * \brief Bulk CCID Message header structure
  */
 typedef struct _S_ccid_bulk_in_header
 {
@@ -131,7 +131,7 @@ typedef struct _S_ccid_bulk_in_header
 
 /**
  * \typedef S_ccid_bulk_out_header
- * \brief  6.1 Bulk Transfers 
+ * \brief  6.1 Bulk Transfers
  */
 typedef struct _S_ccid_bulk_out_header
 {
@@ -153,7 +153,7 @@ typedef struct _S_ccid_bulk_out_header
 
 /**
  * \typedef S_ccid_PIN_Verification
- * \brief 6.1.11.2 PIN Verification Data Structure 
+ * \brief 6.1.11.2 PIN Verification Data Structure
  */
 typedef struct _S_ccid_PIN_Verification
 {
@@ -184,7 +184,7 @@ typedef struct _S_ccid_PIN_Verification
 
 /**
  * \typedef S_ccid_PIN_Modification
- * \brief 6.1.11.7 PIN Modification Data Structure 
+ * \brief 6.1.11.7 PIN Modification Data Structure
  */
 typedef struct _S_ccid_PIN_Modification
 {
@@ -230,9 +230,9 @@ typedef struct _S_ccid_PIN_Modification
     unsigned char abPINApdu[255];
 }__attribute__ ((packed)) S_ccid_PIN_Modification;
 
-/** 
- * \typedef S_ccid_protocol_t0 
- * \brief Protocol Data Structure for Protocol T=0 (bProtocolNum=0, dwLength=00000005h) 
+/**
+ * \typedef S_ccid_protocol_t0
+ * \brief Protocol Data Structure for Protocol T=0 (bProtocolNum=0, dwLength=00000005h)
  */
 typedef struct _S_ccid_protocol_t0
 {
@@ -262,9 +262,9 @@ typedef struct _S_ccid_protocol_t0
 } __attribute__ ((packed)) S_ccid_protocol_t0;
 
 
-/** 
+/**
  * \typedef S_ccid_protocol_t1
- * \brief Protocol Data Structure for Protocol T=1 (bProtocolNum=1, dwLength=00000007h) 
+ * \brief Protocol Data Structure for Protocol T=1 (bProtocolNum=1, dwLength=00000007h)
  */
 typedef struct _S_ccid_protocol_t1
 {
@@ -302,10 +302,10 @@ typedef struct _S_ccid_protocol_t1
 } __attribute__ ((packed)) S_ccid_protocol_t1;
 
 
-/** 
+/**
  * \typedef CCIDDescriptor
- * \brief Identifies the length of type of subordinate descriptors of a CCID device 
- * Table 5.1-1 Smart Card Device Class descriptors 
+ * \brief Identifies the length of type of subordinate descriptors of a CCID device
+ * Table 5.1-1 Smart Card Device Class descriptors
  */
 typedef struct _CCIDDescriptor
 {

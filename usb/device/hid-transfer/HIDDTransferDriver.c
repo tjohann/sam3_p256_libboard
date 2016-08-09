@@ -369,7 +369,7 @@ void HIDDTransferDriver_RequestHandler(const USBGenericRequest *request)
             return; /* Handled, no need do others */
         }
     }
-    
+
 
     /* Process HID requests */
     if (USBRC_SUCCESS == HIDDFunction_RequestHandler(pHidd,

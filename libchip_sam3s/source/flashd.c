@@ -149,7 +149,7 @@ static void ComputeLockRange( uint32_t dwStart, uint32_t dwEnd, uint32_t *pdwAct
 extern void FLASHD_Initialize( uint32_t dwMCk, uint32_t dwUseIAP )
 {
     EFC_DisableFrdyIt( EFC ) ;
-	
+
     if ( (dwMCk/1000000) >= 64 )
 	{
         EFC_SetWaitState( EFC, 2 ) ;
@@ -187,7 +187,7 @@ extern uint32_t FLASHD_Erase( uint32_t dwAddress )
     // Translate write address
     EFC_TranslateAddress( &pEfc, dwAddress, &wPage, &wOffset ) ;
     dwError = EFC_PerformCommand( pEfc, EFC_FCMD_EA, 0, _dwUseIAP ) ;
-	
+
     return dwError ;
 }
 

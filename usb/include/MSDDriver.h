@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2008, Atmel Corporation
  *
@@ -29,11 +29,11 @@
 
 /** \file
  * \section Purpose
- * 
+ *
  * Mass storage %device driver implementation.
- * 
+ *
  * \section Usage
- * 
+ *
  * -# Enable and setup USB related pins (see pio & board.h).
  * -# Configure the memory interfaces used for Mass Storage LUNs
  *    (see memories, MSDLun.h).
@@ -48,10 +48,10 @@
 #ifndef MSDDRIVER_H
 #define MSDDRIVER_H
 
-/** \addtogroup usbd_msd 
+/** \addtogroup usbd_msd
  *@{
  */
- 
+
 /*------------------------------------------------------------------------------
  *         Headers
  *------------------------------------------------------------------------------*/

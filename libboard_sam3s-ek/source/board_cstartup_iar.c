@@ -129,7 +129,7 @@ extern int __low_level_init( void )
     LowLevelInit() ;
 
     SCB->VTOR = ( (uint32_t)pSrc & SCB_VTOR_TBLOFF_Msk ) ;
-    
+
     if ( ((uint32_t)pSrc >= IRAM_ADDR) && ((uint32_t)pSrc < IRAM_ADDR+IRAM_SIZE) )
     {
 	    SCB->VTOR |= 1 << SCB_VTOR_TBLBASE_Pos ;

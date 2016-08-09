@@ -1,17 +1,17 @@
 /**
  *******************************************************************************
  * @file       serviceReq.c
- * @version    V1.13    
+ * @version    V1.13
  * @date       2010.04.26
- * @brief      servive request management implementation code of CooCox CoOS kernel.	
+ * @brief      servive request management implementation code of CooCox CoOS kernel.
  *******************************************************************************
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 
@@ -22,8 +22,8 @@
 
 #if CFG_MAX_SERVICE_REQUEST > 0
 /*---------------------------- Variable Define -------------------------------*/
-SRQ   ServiceReq = {0,0};             /*!< ISR server request queue         */		     
-#endif       
+SRQ   ServiceReq = {0,0};             /*!< ISR server request queue         */
+#endif
 BOOL  IsrReq   = FALSE;
 #if (CFG_TASK_WAITTING_EN > 0)
 BOOL  TimeReq  = FALSE;                 /*!< Time delay dispose request       */
@@ -35,19 +35,19 @@ BOOL  TimerReq = FALSE;                 /*!< Timer dispose request            */
 
 /**
  *******************************************************************************
- * @brief      Insert into service requst queue	 
- * @param[in]  type     Service request type.	
+ * @brief      Insert into service requst queue
+ * @param[in]  type     Service request type.
  * @param[in]  id       Service request event id,event id/flag id.
- * @param[in]  arg      Service request argument. 
- * @param[out] None 
- * 	 
- * @retval     FALSE    Successfully insert into service request queue. 
- * @retval     TRUE     Failure to insert into service request queue.  
+ * @param[in]  arg      Service request argument.
+ * @param[out] None
  *
- * @par Description		 
- * @details    This function be called to insert a requst into service request	
+ * @retval     FALSE    Successfully insert into service request queue.
+ * @retval     TRUE     Failure to insert into service request queue.
+ *
+ * @par Description
+ * @details    This function be called to insert a requst into service request
  *             queue.
- * @note 
+ * @note
  *******************************************************************************
  */
 #if (CFG_MAX_SERVICE_REQUEST > 0)
@@ -80,15 +80,15 @@ BOOL InsertInSRQ(U8 type,U8 id,void* arg)
 
 /**
  *******************************************************************************
- * @brief      Respond the request in the service request queue.	 
+ * @brief      Respond the request in the service request queue.
  * @param[in]  None
- * @param[out] None 
- * @retval     None  
+ * @param[out] None
+ * @retval     None
  *
- * @par Description		 
- * @details    This function be called to respond the request in the service  
+ * @par Description
+ * @details    This function be called to respond the request in the service
  *             request queue.
- * @note 
+ * @note
  *******************************************************************************
  */
 void RespondSRQ(void)

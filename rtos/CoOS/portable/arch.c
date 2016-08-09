@@ -14,16 +14,16 @@
 
 /*---------------------------- Include ---------------------------------------*/
 #include <coocox.h>
-U64     OSTickCnt = 0;                  /*!< Current system tick counter      */ 																			
+U64     OSTickCnt = 0;                  /*!< Current system tick counter      */
 
 /**
  ******************************************************************************
- * @brief      Initial task context	
+ * @brief      Initial task context
  * @param[in]  task    Entry point of task.
- * @param[in]  param   The parameter pass to task.	
- * @param[in]  pstk    The pointer to stack top.	
+ * @param[in]  param   The parameter pass to task.
+ * @param[in]  pstk    The pointer to stack top.
  * @param[out] None
- * @retval     Returns location of new stack top.		
+ * @retval     Returns location of new stack top.
  *
  * @par Description
  * @details    This function is called to initialize the stack frame of the
@@ -40,7 +40,7 @@ OS_STK *InitTaskContext(FUNCPtr task,void *param,OS_STK *pstk)
     context      = context - 5;
 	*(context)   = (U32)param;            /* R0: argument */
 	context      = context - 8;
-  	
+
     return (context);                   /* Returns location of new stack top. */
 }
 
@@ -49,13 +49,13 @@ extern void SysTick_Handler(void) ;
 
 /**
  *******************************************************************************
- * @brief      System tick interrupt handler.			
- * @param[in]  None	
- * @param[out] None  	
+ * @brief      System tick interrupt handler.
+ * @param[in]  None
+ * @param[out] None
  * @retval     None
- *		
+ *
  * @par Description
- * @details    This is system tick interrupt headler.		
+ * @details    This is system tick interrupt headler.
  * @note       CoOS may schedule when exiting this ISR.
  *******************************************************************************
  */
@@ -78,7 +78,7 @@ void SysTick_Handler(void)
     }
 #endif
 
-#if CFG_TMR_EN > 0	
+#if CFG_TMR_EN > 0
     if(TmrList != NULL)             /* Have timer in working?                 */
     {
         if(TmrList->tmrCnt > 1)     /* Timer time > 1?                        */
@@ -90,7 +90,7 @@ void SysTick_Handler(void)
 			TmrList->tmrCnt = 0;
 			isr_TmrDispose();         /* Call hander for timer list             */
 		}
-    }	
+    }
 #endif
 	TaskSchedReq = TRUE;
     OsSchedUnlock();

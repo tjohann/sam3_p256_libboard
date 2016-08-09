@@ -213,7 +213,7 @@ void HIDDMouseDriver_RequestHandler(const USBGenericRequest *request)
     HIDDMouseDriver * pMouse = &hiddMouseDriver;
     HIDDFunction * pHidd = &pMouse->hidDrv;
     USBDDriver * pUsbd = pHidd->pUsbd;
-    
+
     TRACE_INFO("NewReq ");
 
     /* Process HID requests */

@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support 
+ *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
  * Copyright (c) 2008, Atmel Corporation
  *
@@ -35,14 +35,14 @@
 /*------------------------------------------------------------------------------
  *         Headers
  *------------------------------------------------------------------------------*/
-     
+
 #include <USBLib_Trace.h>
 
 #include <AUDDFunction.h>
 #include <AUDDSpeakerPhone.h>
 
 #include <AUDRequests.h>
-     
+
 #include <USBD.h>
 #include <USBD_HAL.h>
 #include <USBDDriver.h>

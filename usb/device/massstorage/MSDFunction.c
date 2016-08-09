@@ -96,7 +96,7 @@ static uint8_t MSDFunction_Parse(USBGenericDescriptor* desc, MSDParseData* arg)
             else if (pMsdd->interfaceNb == pIf->bInterfaceNumber) {
                 arg->pIf = pIf;
             }
-            
+
         }
     }
     /* Start parse endpoints */
@@ -173,7 +173,7 @@ void MSDFunction_Initialize(
 }
 
 /**
- * Invoked when the configuration of the device changes. 
+ * Invoked when the configuration of the device changes.
  * Pass endpoints and resets the mass storage function.
  * \pDescriptors Pointer to the descriptors for function configure.
  * \wLength      Length of descriptors in number of bytes.

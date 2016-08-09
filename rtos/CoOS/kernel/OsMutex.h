@@ -1,7 +1,7 @@
 /**
  *******************************************************************************
- * @file       mutex.h	
- * @version    V1.13    
+ * @file       mutex.h
+ * @version    V1.13
  * @date       2010.04.26
  * @brief      Mutex management header file
  * @details    This file including some defines and declare related to mutex
@@ -10,10 +10,10 @@
  * @copy
  *
  * INTERNAL FILE,DON'T PUBLIC.
- * 
+ *
  * <h2><center>&copy; COPYRIGHT 2009 CooCox </center></h2>
  *******************************************************************************
- */ 
+ */
 
 
 #ifndef _MUTEX_H
@@ -29,15 +29,15 @@
 #define   WAITING_MUTEX     0x80
 
 /**
- * @struct   Mutex  mutex.h 	
+ * @struct   Mutex  mutex.h
  * @brief    Mutex control block
- * @details  This struct is use to mutex management.	
+ * @details  This struct is use to mutex management.
  */
 typedef struct Mutex
 {
     U8       originalPrio;              /*!< Mutex priority.                  */
     U8       mutexFlag;                 /*!< Mutex flag.                      */
-    OS_TID   taskID;                    /*!< Task ID.                         */	
+    OS_TID   taskID;                    /*!< Task ID.                         */
     OS_TID   hipriTaskID;               /*!< Mutex ID.                        */
     P_OSTCB  waittingList;              /*!< waitting the Mutex.              */
 }MUTEX,*P_MUTEX;
