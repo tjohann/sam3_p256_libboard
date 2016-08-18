@@ -28,7 +28,7 @@
 
 # Makefile for compiling libchip
 .SUFFIXES: .o .a .c .s
-SUB_MAKEFILES=debug.mk gcc.mk iar.mk mdk.mk release.mk win.mk linux.mk sam3s-ek.mk
+SUB_MAKEFILES=debug.mk gcc.mk release.mk linux.mk sam3s-ek.mk
 
 SERIE=sam3s
 CHIP=$(SERIE)4
@@ -37,18 +37,7 @@ LIBNAME=libboard
 TOOLCHAIN=gcc
 
 #-------------------------------------------------------------------------------
-# we detect OS (Linux/Windows/Cygwin)
-# not defined for Cygwin
-#ifdef $(OS)
-ifeq ($(OS), Windows_NT)
-include win.mk
-else
 include linux.mk
-endif
-#else
-# Cygwin case
-#include linux.mk
-#endif
 
 #-------------------------------------------------------------------------------
 # Path
@@ -69,7 +58,6 @@ vpath %.c $(PROJECT_BASE_PATH)/source
 vpath %.s $(PROJECT_BASE_PATH)/source
 
 VPATH+=$(PROJECT_BASE_PATH)/source
-
 
 INCLUDES = -I$(PROJECT_BASE_PATH)
 INCLUDES += -I$(PROJECT_BASE_PATH)/include
@@ -153,19 +141,19 @@ release: create_output $(OUTPUT_LIB)
 
 .PHONY: create_output
 create_output:
-#	@echo --- Preparing $(BOARD) files $(OUTPUT_PATH)  $(OUTPUT_BIN) $(OS) $(TOOLCHAIN)
-#	@echo -------------------------
-#	@echo *$(C_SRC)
-#	@echo -------------------------
-#	@echo *$(C_OBJ)
-#	@echo -------------------------
-#	@echo *$(addprefix $(OUTPUT_PATH)/, $(C_OBJ))
-#	@echo -------------------------
-#	@echo *$(A_SRC)
-#	@echo -------------------------
+	@echo --- Preparing $(BOARD) files $(OUTPUT_PATH)  $(OUTPUT_BIN) $(OS) $(TOOLCHAIN)
+	@echo -------------------------
+	@echo *$(C_SRC)
+	@echo -------------------------
+	@echo *$(C_OBJ)
+	@echo -------------------------
+	@echo *$(addprefix $(OUTPUT_PATH)/, $(C_OBJ))
+	@echo -------------------------
+	@echo *$(A_SRC)
+	@echo -------------------------
 
-	-@mkdir $(subst /,$(SEP),$(OUTPUT_BIN))
-	-@mkdir $(OUTPUT_PATH)
+	-@mkdir -p $(subst /,$(SEP),$(OUTPUT_BIN))
+	-@mkdir -p $(OUTPUT_PATH)
 
 $(addprefix $(OUTPUT_PATH)/,$(C_OBJ)): $(OUTPUT_PATH)/%.o: %.c
 	@$(CC) -c $(CFLAGS) $< -o $@
@@ -180,10 +168,7 @@ $(OUTPUT_LIB): $(addprefix $(OUTPUT_PATH)/, $(C_OBJ)) $(addprefix $(OUTPUT_PATH)
 .PHONY: clean
 clean:
 	@echo --- Cleaning $(BOARD) files [$(OUTPUT_PATH)$(SEP)*.o]
-#	-cs-rm -fR $(OUTPUT_PATH)
-#	-cs-rm $(subst /,$(SEP),$(OUTPUT_BIN)/$(OUTPUT_LIB))
-
-	-@cs-rm -fR $(OUTPUT_PATH)
-	-@cs-rm -fR $(OUTPUT_BIN)/$(OUTPUT_LIB)
+	rm -fR $(OUTPUT_PATH)
+	rm -fR $(OUTPUT_BIN)/$(OUTPUT_LIB)*
 
 $(addprefix $(OUTPUT_PATH)/,$(C_OBJ)): $(OUTPUT_PATH)/%.o: $(PROJECT_BASE_PATH)/board.h $(wildcard $(PROJECT_BASE_PATH)/include/*.h)
