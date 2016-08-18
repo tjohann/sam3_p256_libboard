@@ -28,6 +28,16 @@ Build
 
 To build everthing do a
 
-	make
+   make
 
-This will build the librarys and install them in ./lib.
+This will build the librarys (libchip and libboard).
+
+
+Install
+-------
+
+To install them do a
+
+   make install
+
+This will install them to ${ARM_CORTEX_HOME}/lib.
