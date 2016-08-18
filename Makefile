@@ -13,7 +13,7 @@ endif
 MODULES = libboard_sam3s-ek/build/gcc
 MODULES += libchip_sam3s/build/gcc
 MODULES += memories/build/gcc
-
+MODULES += usb/build/gcc
 
 all::
 	@echo "+-----------------------------------------------------------+"
@@ -31,3 +31,4 @@ install::
 	cp -rf libboard_sam3s-ek/lib/libboard_sam3s_ek_gcc* ${ARM_CORTEX_HOME}/lib
 	cp -rf libchip_sam3s/lib/libchip_sam3s4_gcc* ${ARM_CORTEX_HOME}/lib
 	cp -rf memories/lib/libmemories_sam3s_gcc* ${ARM_CORTEX_HOME}/lib
+	cp -rf usb/lib/libusb_sam3s_gcc* ${ARM_CORTEX_HOME}/lib
