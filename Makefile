@@ -10,7 +10,10 @@ ifeq "${ARM_CORTEX_BIN_HOME}" ""
     $(error error: please source armhf_env first!)
 endif
 
-MODULES = libboard_sam3s-ek/build/gcc libchip_sam3s/build/gcc
+MODULES = libboard_sam3s-ek/build/gcc
+MODULES += libchip_sam3s/build/gcc
+MODULES += memories/build/gcc
+
 
 all::
 	@echo "+-----------------------------------------------------------+"
@@ -27,4 +30,4 @@ clean::
 install::
 	cp -rf libboard_sam3s-ek/lib/libboard_sam3s_ek_gcc* ${ARM_CORTEX_HOME}/lib
 	cp -rf libchip_sam3s/lib/libchip_sam3s4_gcc* ${ARM_CORTEX_HOME}/lib
-
+	cp -rf memories/lib/libmemories_sam3s_gcc* ${ARM_CORTEX_HOME}/lib

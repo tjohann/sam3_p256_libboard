@@ -30,7 +30,7 @@ To build everthing do a
 
    make
 
-This will build the librarys (libchip and libboard).
+This will build the librarys (libchip, libboard and memories).
 
 
 Install
