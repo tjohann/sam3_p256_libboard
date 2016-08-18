@@ -28,7 +28,7 @@
 
 # Makefile for compiling libchip
 .SUFFIXES: .o .a .c .s
-SUB_MAKEFILES=debug.mk gcc.mk mdk.mk release.mk linux.mk atsam3s.mk
+SUB_MAKEFILES=debug.mk gcc.mk release.mk linux.mk atsam3s.mk
 
 LIBNAME=libchip
 TOOLCHAIN=gcc
@@ -96,9 +96,7 @@ OUTPUT_PATH=$(OUTPUT_OBJ)_$(CHIP)
 C_SRC=$(wildcard $(PROJECT_BASE_PATH)/source/*.c)
 C_SRC+=$(wildcard $(PROJECT_BASE_PATH)/cmsis/*.c)
 
-#C_OBJ_TEMP=$(addprefix $(OUTPUT_PATH)/,$(patsubst %.c,%.o,$(notdir $(C_SRC))))
 C_OBJ_TEMP=$(patsubst %.c, %.o, $(notdir $(C_SRC)))
-#C_OBJ_TEMP=$(C_SRC:%.c=%.o)
 
 # during development, remove some files
 C_OBJ_FILTER=hsmci.o hsmci_pdc.o mci_cmd.o supc.o USBDCallbacks_Initialized.o USBDCallbacks_Resumed.o USBDCallbacks_Suspended.o
@@ -112,15 +110,12 @@ C_OBJ=$(filter-out $(C_OBJ_FILTER), $(C_OBJ_TEMP))
 A_SRC=$(wildcard $(PROJECT_BASE_PATH)/source/*.s)
 A_SRC+=$(wildcard $(PROJECT_BASE_PATH)/cmsis/*.s)
 
-#A_OBJ_TEMP=$(addprefix $(OUTPUT_PATH)/,$(patsubst %.s,%.o,$(notdir $(A_SRC))))
 A_OBJ_TEMP=$(patsubst %.s, %.o, $(notdir $(A_SRC)))
-#A_OBJ_TEMP=$(S_SRC:%.s=%.o)
 
 # during development, remove some files
 A_OBJ_FILTER=
 
 A_OBJ=$(filter-out $(A_OBJ_FILTER), $(A_OBJ_TEMP))
-#A_OBJ=$(addprefix $(OUTPUT_PATH)/,$(filter-out $(A_OBJ_FILTER), $(A_OBJ_TEMP)))
 
 #-------------------------------------------------------------------------------
 # Rules
@@ -129,9 +124,9 @@ all: $(CHIP)
 
 $(CHIP): create_output $(OUTPUT_LIB)
 
-#debug: create_output $(OUTPUT_LIB)
+debug: create_output $(OUTPUT_LIB)
 
-#release: create_output $(OUTPUT_LIB)
+release: create_output $(OUTPUT_LIB)
 
 .PHONY: create_output
 #create_output: $(subst /,$(SEP),$(OUTPUT_BIN)) $(OUTPUT_PATH)
@@ -146,31 +141,24 @@ create_output:
 	@echo -------------------------
 	@echo *$(A_SRC)
 	@echo -------------------------
-	-@mkdir $(subst /,$(SEP),$(OUTPUT_BIN))
-	-@mkdir $(OUTPUT_PATH)
 
-#%.o : %.c %.h chip.h $(SUB_MAKEFILES)
-#	$(CC) -c $(CFLAGS) $< -o $(OUTPUT_PATH)/$@
-#$(addprefix $(OUTPUT_PATH)/,$(C_OBJ)): $(OUTPUT_PATH)/%.o : %.c %.h chip.h $(SUB_MAKEFILES)
-#$(O_DST): %.o: %.c %.h chip.h $(SUB_MAKEFILES)
+	-@mkdir -p $(subst /,$(SEP),$(OUTPUT_BIN))
+	-@mkdir -p $(OUTPUT_PATH)
 
 $(addprefix $(OUTPUT_PATH)/,$(C_OBJ)): $(OUTPUT_PATH)/%.o: %.c
 	@$(CC) -c $(CFLAGS) $< -o $@
-#	@$(CC) $(CFLAGS) $<
 
 $(addprefix $(OUTPUT_PATH)/,$(A_OBJ)): $(OUTPUT_PATH)/%.o: %.s
 	@$(AS) -c $(ASFLAGS) $< -o $@
 
 $(OUTPUT_LIB): $(addprefix $(OUTPUT_PATH)/, $(C_OBJ)) $(addprefix $(OUTPUT_PATH)/, $(A_OBJ))
-#	$(AR) -r $(OUTPUT_BIN)/$@ $(addprefix $(OUTPUT_PATH)/,$^)
-#$(OUTPUT_LIB): $(addprefix $(OUTPUT_PATH)/,$(O_DST))
 	@$(AR) -r $(OUTPUT_BIN)/$@ $^
 	@$(NM) $(OUTPUT_BIN)/$@ > $(OUTPUT_BIN)/$@.txt
 
 .PHONY: clean
 clean:
 	@echo --- Cleaning $(CHIP) files
-	-@cs-rm -Rf $(OUTPUT_PATH)
-	-@cs-rm -Rf $(subst /,$(SEP),$(OUTPUT_BIN)/$(OUTPUT_LIB))
+	rm -fR $(OUTPUT_PATH)
+	rm -fR $(OUTPUT_BIN)/$(OUTPUT_LIB)*
 
 $(addprefix $(OUTPUT_PATH)/,$(C_OBJ)): $(OUTPUT_PATH)/%.o: $(PROJECT_BASE_PATH)/chip.h $(wildcard $(PROJECT_BASE_PATH)/include/*.h) $(wildcard $(PROJECT_BASE_PATH)/cmsis/*.h)

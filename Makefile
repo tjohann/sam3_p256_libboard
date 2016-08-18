@@ -10,8 +10,7 @@ ifeq "${ARM_CORTEX_BIN_HOME}" ""
     $(error error: please source armhf_env first!)
 endif
 
-# MODULES = libboard_sam3s-ek/build/gcc libchip_sam3s/build/gcc
-MODULES = libboard_sam3s-ek/build/gcc
+MODULES = libboard_sam3s-ek/build/gcc libchip_sam3s/build/gcc
 
 all::
 	@echo "+-----------------------------------------------------------+"
